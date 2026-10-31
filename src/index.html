@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0f1115">
+<title>honeGPT</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <aside id="drawer" aria-label="对话列表">
+    <div class="dr-top">
+      <button class="btn primary block" data-act="new-chat"><span data-icon="plus"></span>新对话</button>
+      <div class="search"><span data-icon="search"></span><input id="chatSearch" placeholder="搜索对话" autocomplete="off" spellcheck="false"></div>
+    </div>
+    <div id="chatList" class="dr-list"></div>
+    <div class="dr-foot">
+      <button class="foot-btn" data-act="open-assistants"><span data-icon="bot"></span>助手</button>
+      <button class="foot-btn" data-act="open-memory"><span data-icon="bookmark"></span>记忆</button>
+      <button class="foot-btn" data-act="open-settings"><span data-icon="sliders"></span>设置</button>
+    </div>
+  </aside>
+
+  <div id="col">
+    <header id="topbar">
+      <button class="icon-btn" id="menuBtn" data-act="drawer" aria-label="菜单"><span data-icon="menu"></span></button>
+      <div class="title-wrap">
+        <button class="title-btn" data-act="pick-assistant"><span id="asstEmoji"></span><span id="asstName"></span></button>
+        <button class="model-chip" id="modelChip" data-act="pick-model"></button>
+      </div>
+      <button class="icon-btn" data-act="new-chat" aria-label="新对话"><span data-icon="plus"></span></button>
+    </header>
+
+    <main id="chat"><div id="messages"></div></main>
+
+    <footer id="composer">
+      <div class="comp-in">
+        <textarea id="input" rows="1" placeholder="给 honeGPT 发消息…" autocomplete="off" autocapitalize="sentences"></textarea>
+        <button id="sendBtn" class="send" data-act="send" aria-label="发送"></button>
+      </div>
+    </footer>
+  </div>
+
+  <div id="scrim" data-act="close-drawer"></div>
+  <div id="sheets"></div>
+  <div id="toast"></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
