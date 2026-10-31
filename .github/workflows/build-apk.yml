@@ -45,18 +45,15 @@ jobs:
         with:
           workspaces: src-tauri
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
+      # 用 cargo 版 CLI：Gradle 打包阶段会回调 CLI，npm 全局版在这里找不到路径
       - name: Install Tauri CLI
-        run: npm install -g @tauri-apps/cli@^2
+        run: command -v cargo-tauri >/dev/null || cargo install tauri-cli --version "^2" --locked
 
       - name: Generate icons
-        run: tauri icon app-icon.png
+        run: cargo tauri icon app-icon.png
 
       - name: Init Android project
-        run: tauri android init --ci
+        run: cargo tauri android init --ci
 
       - name: Dark window background / system bars
         run: |
@@ -82,7 +79,7 @@ jobs:
             all) TARGETS="" ;;
             *)   TARGETS="--target ${{ inputs.abi || 'aarch64' }}" ;;
           esac
-          tauri android build --apk --ci $TARGETS
+          cargo tauri android build --apk --ci $TARGETS
 
       - name: Restore signing key cache
         uses: actions/cache@v4
