@@ -1,0 +1,18 @@
+{
+  "identifier": "default",
+  "description": "honeGPT 主窗口权限：核心功能、打开外链、对任意 API 地址发起 HTTP 请求",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "opener:default",
+    {
+      "identifier": "http:default",
+      "allow": [
+        { "url": "https://*" },
+        { "url": "https://*:*" },
+        { "url": "http://*" },
+        { "url": "http://*:*" }
+      ]
+    }
+  ]
+}
